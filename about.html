@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — I-Impact Consult</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#8a5a3a;       /* warm brown */
+      --brand-dark:#6e452c;
+      --ink:#0b1220;
+      --muted:#6d7076;
+      --paper:#f4f2ef;
+    }
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--paper)}
+
+    /* NAVBAR */
+    .navbar{background:#efece7}
+    .brandmark{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:800;color:#5b4333}
+    .brandmark img{height:34px;width:auto}
+    .nav-link{font-weight:600;color:#2b2f35!important}
+    .nav-link:hover,.nav-link.active{color:var(--brand-dark)!important}
+    .btn-meeting{
+      background:var(--brand);color:#fff;font-weight:700;border:none;
+      padding:.65rem 1.15rem;border-radius:.85rem;box-shadow:0 6px 18px rgba(138,90,58,.18)
+    }
+    .btn-meeting:hover{background:var(--brand-dark)}
+
+    /* PAGE: ABOUT */
+    .about-hero{
+      padding: clamp(1rem, 3vw, 1.75rem) 0;
+      background:#efece7;
+      border-bottom:1px solid rgba(0,0,0,.05);
+    }
+    .hero-frame{
+      margin: 0 auto;
+      border-radius:.25rem;
+      overflow:hidden;
+      box-shadow:0 16px 36px rgba(0,0,0,.08);
+      background:#ddd;
+    }
+    .hero-frame img{
+      display:block;width:100%;height: clamp(320px, 52vw, 520px);
+      object-fit:cover;object-position:center 45%;
+    }
+
+    .about-title{
+      font-family:"Cormorant Garamond", serif;
+      font-weight:700; line-height:1.05; letter-spacing:.3px;
+      font-size: clamp(2rem, 4vw + .5rem, 3.4rem);
+      text-align:center; color:#141313;
+      margin: clamp(1.2rem, 3vw, 1.8rem) 0 .5rem;
+    }
+    .about-copy{
+      max-width:1050px; margin:0 auto;
+      color:#6a6e73; text-align:center; line-height:1.9;
+      font-size: clamp(.95rem, .25vw + .92rem, 1.02rem);
+      padding: 0 clamp(.75rem, 3vw, 1rem);
+    }
+
+    /* Footer (mini, optional) */
+    .site-footer{
+      background:#f7f6f4;border-top:1px solid rgba(0,0,0,.06);padding:1.4rem 0;margin-top:2rem
+    }
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-weight:800;color:#5b4232}
+    .footer-brand img{height:26px}
+    .footer-links a{color:#6b6e72;text-decoration:none;margin-left:1rem}
+    .footer-links a:hover{color:var(--brand-dark)}
+    @media (max-width:768px){
+      .footer-inner{flex-direction:column;text-align:center}
+      .footer-links a{margin:0 .5rem}
+    }
+
+    /* === WHO ARE WE (cards) === */
+.who-cards{ background:#f5f3f0 } /* same warm page tone */
+.who-cards__kicker{
+  text-transform:uppercase; letter-spacing:.16em; font-weight:800;
+  font-size:.95rem; color:#8c6d52;
+}
+
+/* card */
+.who-card{
+  position:relative; background:#fff; border:1px solid rgba(0,0,0,.08);
+  border-radius:.55rem; padding:1.25rem 1.2rem 2.25rem; /* extra bottom for badge */
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+}
+.who-card__title{
+  font-family:"Cormorant Garamond",serif; font-weight:700; color:#191919;
+  font-size:clamp(1.05rem, 1.1vw + .8rem, 1.35rem); line-height:1.2; margin-bottom:.5rem;
+}
+.who-card__text{
+  color:#5f6469; line-height:1.7; margin:0; font-size:.975rem;
+}
+
+/* round numbered badge bottom-right */
+.who-card__badge{
+  position:absolute; right:.9rem; bottom:.9rem;
+  display:inline-grid; place-items:center;
+  width:28px; height:28px; border-radius:50%;
+  border:1px solid #8a5a3a; color:#8a5a3a; font-weight:700; font-size:.95rem;
+  background:#fff;
+}
+
+/* spacing tweaks on small screens */
+@media (max-width: 575.98px){
+  .who-card{ padding:1rem 1rem 2.1rem }
+}
+
+
+/* PRACTICE AREA */
+.pa-wrap{ background:#f7f5f2; position:relative }
+.pa-kicker{ text-transform:uppercase; letter-spacing:.16em; font-weight:800; color:#8c6d52 }
+.pa-title{
+  font-family:"Cormorant Garamond",serif; font-weight:700; line-height:1.05;
+  font-size:clamp(2rem,3.6vw + .5rem,3.2rem); color:#131313; margin:0.15rem 0 0.6rem;
+}
+
+/* tile */
+.pa-card{
+  background:
+    radial-gradient(1400px 800px at 50% 0%, rgba(0,0,0,.03), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.045) 0 1px, rgba(0,0,0,0) 1px 7px),
+    #e7e3de;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:.55rem;
+  padding:1.1rem .75rem;
+  text-align:center;
+  min-height:124px;
+  display:flex; flex-direction:column; justify-content:center; align-items:center; gap:.5rem;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+}
+.pa-card:hover{ transform:translateY(-2px); box-shadow:0 14px 28px rgba(0,0,0,.08) }
+
+.pa-ico{ font-size:1.9rem; color:#7a5338 }
+.pa-lbl{ font-weight:700; color:#262626; line-height:1.15; font-size:.95rem }
+
+/* decorative stripes bottom-left */
+.pa-slant{
+  position:absolute; left:-14px; width:160px; height:260px; transform:rotate(-20deg);
+  background:repeating-linear-gradient(90deg, rgba(138,90,58,.22) 0 2px, rgba(138,90,58,0) 2px 8px);
+  opacity:.55; border-radius:.25rem; pointer-events:none;
+}
+.pa-slant-a{ bottom:-10px }
+.pa-slant-b{ bottom:140px; height:200px; left:-28px }
+
+/* tighter layout on small screens */
+@media (max-width: 575.98px){
+  .pa-card{ min-height:112px; padding:.95rem .6rem }
+  .pa-ico{ font-size:1.7rem }
+  .pa-lbl{ font-size:.9rem }
+}
+
+
+/* ===== Legal Services (3-up) ===== */
+.ls-wrap{ background:#f4f2ef; position:relative }
+.ls-title{
+  font-family:"Cormorant Garamond", serif;
+  font-weight:700; line-height:1.05; letter-spacing:.2px;
+  font-size:clamp(2rem, 3.8vw + .5rem, 3.2rem); color:#111;
+}
+
+/* Card shell */
+.ls-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:.45rem;
+  overflow:hidden;
+  box-shadow:0 12px 28px rgba(0,0,0,.06);
+  display:flex; flex-direction:column;
+}
+
+/* Media with diagonal cut */
+.ls-media{ position:relative; margin:0; line-height:0; overflow:hidden }
+.ls-media img{
+  display:block; width:100%; height:clamp(260px, 30vw, 340px); object-fit:cover;
+}
+/* the diagonal */
+.ls-media::after{
+  content:""; position:absolute; left:0; right:0; height:74px;
+  background:#fff; transform-origin:left bottom; transform:skewY(-6deg);
+  box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+}
+
+/* Body */
+.ls-body{ padding:1.35rem 1.6rem 1.6rem }
+.ls-h3{
+  font-family:"Cormorant Garamond", serif;
+  font-weight:700; color:#1a1a1a; margin:0 0 .55rem;
+  font-size:clamp(1.15rem, 1.1vw + .9rem, 1.55rem); line-height:1.25;
+}
+.ls-text{
+  color:#5f6469; line-height:1.75; margin:0;
+  font-size:clamp(.95rem, .25vw + .92rem, 1rem);
+}
+
+/* Spacing tweaks */
+@media (max-width: 991.98px){
+  .ls-media img{ height:300px }
+}
+@media (max-width: 575.98px){
+  .ls-media img{ height:240px }
+  .ls-body{ padding:1.1rem 1.2rem 1.25rem }
+}
+
+
+/* ===== Founder Section ===== */
+.founder-wrap{
+  background:#faf9f7;
+  border:1px solid rgba(0,0,0,.08);
+  border-left:none; border-right:none;
+}
+.founder-kicker{
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-weight:800;
+  color:#8c6d52;
+  font-size:.85rem;
+}
+.founder-title{
+  font-family:"Cormorant Garamond", serif;
+  font-weight:700;
+  font-size:clamp(1.7rem, 3.6vw, 2.5rem);
+  color:#191919;
+  line-height:1.1;
+}
+.founder-text{
+  color:#5f6469;
+  line-height:1.7;
+  max-width:65ch;
+  font-size:clamp(.95rem, .3vw + .9rem, 1rem);
+  margin-bottom:1rem;
+}
+
+/* Tilted portrait frame */
+.founder-portrait{
+  position:relative;
+  width:min(520px, 95%);
+  aspect-ratio:4/5.2;
+  margin:0;
+  transform:rotate(-3.5deg);
+  background:linear-gradient(#f4f4f4, #e6e4e2);
+  border:2px solid #d8d6d3;
+  border-radius:.4rem;
+  box-shadow:0 18px 36px rgba(0,0,0,.1);
+  overflow:hidden;
+}
+.founder-portrait img{
+  position:absolute;
+  inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  transform:scale(1.02);
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px){
+  .founder-portrait{ transform:none; margin-bottom:1.5rem }
+  .founder-title{ text-align:center }
+  .founder-text{ text-align:center; margin-inline:auto }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg py-3">
+    <div class="container-xxl">
+      <a class="brandmark" href="">
+        <!-- swap with your actual SVG/PNG -->
+        <img src="logo.png" alt="I-Impact Consult">
+        <span>I-Impact Consult</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mx-auto gap-lg-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Corporate &amp; Commercial</a></li>
+              <li><a class="dropdown-item" href="#">Litigation &amp; Dispute Resolution</a></li>
+              <li><a class="dropdown-item" href="#">Compliance &amp; Strategy</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+        </ul>
+        <a class="btn btn-meeting" href="contact.html">Schedule A Meeting</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO IMAGE -->
+  <section class="about-hero">
+    <div class="container-xxl">
+      <div class="hero-frame">
+        <!-- replace with your hero photo -->
+        <img src="aa.png" alt="About I-Impact Consult">
+      </div>
+    </div>
+  </section>
+
+  <!-- TITLE + COPY -->
+  <div class="container-xxl" id="who-we-are-Main">
+    <h1 class="about-title">I-Impact Consult</h1>
+    <p class="about-copy">
+      I-Impact is a full-service law firm with a broad and extensive experience in corporate and commercial,
+      company secretarial, regulatory compliance, litigation, intellectual property, project finance, media, real estate
+      and telecommunications practices garnered over the numerous years of partnering and advising corporates,
+      organizations and individuals. We also offer free bespoke counselling sessions on our Impact Mondays as well as
+      other projects targeted at making significant impact in the lives of people. <br>
+      We are duly registered to carry on legal practice in the Federal Republic of Nigeria and have a presence in Nigeria’s
+      Federal Capital Territory, Abuja.
+    </p>
+  </div>
+
+
+  <!-- WHO ARE WE (cards) -->
+<section class="who-cards py-5 py-lg-6" id="who-we-are">
+  <div class="container-xxl">
+    <h3 class="who-cards__kicker text-center mb-4">Who Are We</h3>
+
+    <div class="row g-3 g-lg-4">
+      <!-- 1 -->
+      <div class="col-12 col-md-6 col-lg-3" id="FEATURE1">
+        <article class="who-card h-100">
+          <h4 class="who-card__title">Expertise You Can Trust</h4>
+          <p class="who-card__text">
+            Our team of highly-skilled lawyers and consultants possess the requisite know-how, having
+            advised corporates and individuals on commercial transactions including license procurement,
+            joint ventures, capital raisings, securities offerings, software licensing, intellectual property,
+            corporate governance and restructuring, project financing, etc.
+          </p>
+          <span class="who-card__badge">1</span>
+        </article>
+      </div>
+
+      <!-- 2 -->
+      <div class="col-12 col-md-6 col-lg-3" id="FEATURE2">
+        <article class="who-card h-100">
+          <h4 class="who-card__title">Smarter Legal Project Management</h4>
+          <p class="who-card__text">
+            We are able to work more closely, and more productively, with clients due to our deep understanding of
+            project management and the application of these concepts in rendering our services. Our legal project
+            management framework delivers improved resource management and task allocation, better cost estimation,
+            regular reporting, and agility when responding to changing client needs.
+          </p>
+          <span class="who-card__badge">2</span>
+        </article>
+      </div>
+
+      <!-- 3 -->
+      <div class="col-12 col-md-6 col-lg-3" id="FEATURE3">
+        <article class="who-card h-100">
+          <h4 class="who-card__title">Strong Networks &amp; Regulatory Insight</h4>
+          <p class="who-card__text">
+            We have a network and comprehensive experience in interacting with consultants, government officials,
+            policymakers and regulators. We value our ties with the public sector and understand the convergence
+            of law, policy, regulation, politics and business—giving us powerfully effective reach with regulators.
+          </p>
+          <span class="who-card__badge">3</span>
+        </article>
+      </div>
+
+      <!-- 4 -->
+      <div class="col-12 col-md-6 col-lg-3" id="FEATURE4">
+        <article class="who-card h-100">
+          <h4 class="who-card__title">Impact Through Counselling</h4>
+          <p class="who-card__text">
+            We provide bespoke counselling sessions for every legal and social need. This offering is amplified
+            during Impact Mondays where the same quality of service is provided free of charge.
+          </p>
+          <span class="who-card__badge">4</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRACTICE AREA -->
+<section id="practice-area" class="pa-wrap py-5 py-lg-6">
+  <div class="container-xxl position-relative">
+
+    <div class="d-flex align-items-baseline justify-content-between flex-wrap gap-3 mb-3">
+      <div>
+        <div class="pa-kicker">WHAT WE DO</div>
+        <h2 class="pa-title">Practice Area</h2>
+      </div>
+    </div>
+
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3 g-lg-4">
+      <!-- 1 -->
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-bank2 pa-ico"></i>
+        <div class="pa-lbl">Capital Market &amp; Finance</div>
+      </article></div>
+      <!-- 2 -->
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-chat-text pa-ico"></i>
+        <div class="pa-lbl">Dispute Resolution</div>
+      </article></div>
+      <!-- 3 -->
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-lightbulb pa-ico"></i>
+        <div class="pa-lbl">Intellectual Property</div>
+      </article></div>
+      <!-- 4 -->
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-diagram-3 pa-ico"></i>
+        <div class="pa-lbl">Corporate Governance<br>&amp; Compliance</div>
+      </article></div>
+      <!-- 5 -->
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-arrows-fullscreen pa-ico"></i>
+        <div class="pa-lbl">Mergers &amp; Acquisition</div>
+      </article></div>
+      <!-- 6 -->
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-image pa-ico"></i>
+        <div class="pa-lbl">Real Estate</div>
+      </article></div>
+
+      <!-- row 2 -->
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-person-badge pa-ico"></i>
+        <div class="pa-lbl">Employment<br>&amp; Migration</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-cpu pa-ico"></i>
+        <div class="pa-lbl">Financial Technology</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-bank pa-ico"></i>
+        <div class="pa-lbl">Public Policy<br>&amp; Relation</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-lightning-charge pa-ico"></i>
+        <div class="pa-lbl">Energy<br>&amp; Natural Resource</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-cash-coin pa-ico"></i>
+        <div class="pa-lbl">Taxation</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-star pa-ico"></i>
+        <div class="pa-lbl">Infrastructure Finance<br>&amp; PPP</div>
+      </article></div>
+
+      <!-- row 3 (mirrors your screenshot with repeats) -->
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-person-badge pa-ico"></i>
+        <div class="pa-lbl">Employment<br>&amp; Migration</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-cpu pa-ico"></i>
+        <div class="pa-lbl">Financial Technology</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-bank pa-ico"></i>
+        <div class="pa-lbl">Public Policy<br>&amp; Relation</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-lightning-charge pa-ico"></i>
+        <div class="pa-lbl">Energy<br>&amp; Natural Resource</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-cash-coin pa-ico"></i>
+        <div class="pa-lbl">Taxation</div>
+      </article></div>
+      <div class="col"><article class="pa-card">
+        <i class="bi bi-star pa-ico"></i>
+        <div class="pa-lbl">Infrastructure Finance<br>&amp; PPP</div>
+      </article></div>
+    </div>
+
+    <!-- decorative slanted stripes (bottom-left) -->
+    <div class="pa-slant pa-slant-a d-none d-lg-block"></div>
+    <div class="pa-slant pa-slant-b d-none d-lg-block"></div>
+  </div>
+</section>
+
+
+<!-- LEGAL SERVICES -->
+<section id="legal-services" class="ls-wrap py-5 py-lg-6">
+  <div class="container-xxl">
+
+    <!-- (Optional) Section heading; hide if you already have a page title above -->
+    <h2 class="ls-title text-center mb-4 d-none">Legal Services</h2>
+
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="ls-card h-100">
+          <figure class="ls-media">
+            <img src="a2.png" alt="Banking and finance">
+          </figure>
+          <div class="ls-body">
+            <h3 class="ls-h3">Banking And Finance Legal Service</h3>
+            <p class="ls-text">
+              We provide legal services on banking and finance matters to our clients including drafting and
+              negotiating financial documentation such as loan agreements and syndicated loans, security instruments
+              and other forms of guarantee. We advise and assist on specific transactions or matters relating to capital
+              raising, securities offerings, capital restructuring, corporate and asset acquisitions and disposals,
+              strategic investments and similar activities.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="ls-card h-100">
+          <figure class="ls-media">
+            <img src="a1.png" alt="Litigation and dispute resolution">
+          </figure>
+          <div class="ls-body">
+            <h3 class="ls-h3">Litigation And Dispute Resolution</h3>
+            <p class="ls-text">
+              Our lawyers deploy the requisite tools and strategies to find creative and innovative solutions
+              to the most challenging legal problems. Whether at trial or negotiating a settlement, our clients
+              can rely on our impeccable advocacy in the courtroom and our skilful alternative dispute resolution
+              techniques to maximize their chances of a desired result. We also help identify, assess and manage
+              risks in relation to investment decisions and businesses to prevent possible loss.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="ls-card h-100">
+          <figure class="ls-media">
+            <img src="a3.png" alt="Real estate services">
+          </figure>
+          <div class="ls-body">
+            <h3 class="ls-h3">Real Estate Services</h3>
+            <p class="ls-text">
+              We assist clients in sourcing their desired place of abode. Whether the search is for a house to rent or an
+              outright purchase of land/houses, we have a network of agents and property managers who we work closely
+              with to achieve the desired results.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOUNDER SPOTLIGHT -->
+<section id="founder" class="founder-wrap py-5 py-lg-6">
+  <div class="container-xxl">
+    <div class="row align-items-center gy-5">
+      
+      <!-- Left: Tilted Image -->
+      <div class="col-lg-5">
+        <figure class="founder-portrait mx-auto mx-lg-0">
+          <img src="img1.png" alt="Founder portrait">
+        </figure>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="col-lg-7">
+        <h6 class="founder-kicker mb-2">Our Founder</h6>
+        <h3 class="founder-title mb-3">Precious Chinazam Ijere</h3>
+        <p class="founder-text">
+          Precious is our founder and Managing Partner and a graduate of University of Uyo, Akwa-Ibom state.
+          Since her call to the bar she has practised as a litigation lawyer but is currently carving a niche
+          for herself in the corporate/commercial field. Her negotiating and advisory skills are second to none
+          as she helps companies navigate the complexities in the corporate and business world. She sits as Company
+          Secretary on several Boards, a role that distinguishes her capabilities.
+        </p>
+        <p class="founder-text">
+          She holds enormous strides on Leadership and Development, hence <em>Impact Monday</em>.
+          She is a member of reputable professional institutes, such as the Nigerian Bar Association, Institute of
+          Chartered Mediators and Conciliators, Intellectual Property Lawyers Association Nigeria, etc.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <!-- (optional) FOOTER -->
+  <footer class="site-footer">
+    <div class="container-xxl footer-inner">
+      <a class="footer-brand" href="index.html"><img src="logo.png" alt=""> <span>I-Impact Consult</span></a>
+      <div class="footer-links">
+        <span class="text-muted me-3">© I-Impact Consult. All Rights Reserved.</span>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms &amp; Condition</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

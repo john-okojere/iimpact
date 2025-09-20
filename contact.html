@@ -1,0 +1,200 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Contact Us â€” I-Impact Consult</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+:root{
+  --brand:#8a5a3a;
+  --brand-dark:#6e452c;
+  --ink:#141416;
+  --muted:#6c7076;
+  --paper:#f4f2ef;
+  --card:#ffffff;
+  --card-edge:#ede9e4;
+}
+html,body{height:100%}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--paper);color:var(--ink)}
+
+/* Navbar (simple, matches site) */
+.navbar{background:#efece7}
+.brandmark{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:#5b4333;font-weight:800}
+.brandmark img{height:32px}
+.nav-link{font-weight:600;color:#2b2f35!important}
+.nav-link:hover,.nav-link.active{color:var(--brand-dark)!important}
+.btn-meeting{background:var(--brand);color:#fff;border:none;border-radius:.9rem;padding:.65rem 1.1rem;font-weight:800;box-shadow:0 8px 22px rgba(138,90,58,.2)}
+.btn-meeting:hover{background:var(--brand-dark)}
+.navbar-toggler{border-radius:.75rem;padding:.45rem .6rem;box-shadow:0 6px 16px rgba(138,90,58,.12);background:#fff}
+.navbar-toggler:focus{box-shadow:0 0 0 .2rem rgba(138,90,58,.18)}
+.navbar-toggler-icon{width:1.55em;height:1.55em;background-image:url('data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(110,69,44,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e');background-size:100% 100%;background-repeat:no-repeat}
+
+/* Page title */
+.ct-title{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:700; line-height:1.05; letter-spacing:.2px;
+  font-size: clamp(2rem,4.2vw + .5rem,3.2rem);
+  text-align:center; margin:1.1rem 0 1.2rem; color:#111;
+}
+
+/* Layout */
+.ct-grid{align-items:start}
+.card-soft{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:1.1rem;
+  box-shadow:0 18px 38px rgba(0,0,0,.08);
+}
+
+/* Left: portrait */
+.ct-photo.card-soft{overflow:hidden}
+.ct-photo img{display:block;width:100%;height:520px;object-fit:cover}
+
+/* Center: form */
+.ct-form.card-soft{padding:1.25rem 1.25rem 1.1rem}
+.ct-form .label{
+  text-transform:uppercase; letter-spacing:.16em;
+  color:#9a8f84; font-weight:800; font-size:.8rem; margin:.5rem 0 .25rem;
+}
+.ct-input, .ct-textarea{
+  background:#fbfaf9; border:1px solid var(--card-edge);
+  border-radius:.85rem; padding:.9rem 1rem; width:100%;
+  color:#202327; outline:none;
+}
+.ct-input:focus,.ct-textarea:focus{border-color:#d8cfc6; box-shadow:0 0 0 .25rem rgba(138,90,58,.08)}
+.ct-textarea{min-height:160px; resize:vertical}
+.ct-form .submit{margin-top:1rem}
+
+/* Right: info cards */
+.info-card{
+  background:#f7f5f2; border:1px solid rgba(0,0,0,.06);
+  border-radius:1.1rem; padding:1rem 1.1rem;
+  box-shadow:0 16px 34px rgba(0,0,0,.08);
+}
+.info-icon{
+  display:inline-grid; place-items:center; width:36px; height:36px;
+  border-radius:50%; border:1px solid rgba(0,0,0,.28); color:var(--brand-dark); margin-bottom:.35rem
+}
+.info-title{font-weight:700;color:#6f5544;margin:.15rem 0}
+.info-text{color:#61656a;margin:0}
+
+/* Background subtle vignette */
+.hero-bg{
+  background:
+    radial-gradient(1200px 800px at 65% 0%, rgba(138,90,58,.06), transparent 60%),
+    linear-gradient(#f6f4f1, #f3f1ee);
+  border-bottom:1px solid rgba(0,0,0,.04);
+}
+@media (max-width: 991.98px){
+  .ct-photo img{height:440px}
+}
+@media (max-width: 575.98px){
+  .ct-photo img{height:360px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg py-3">
+  <div class="container-xxl">
+    <a class="brandmark" href="index.html">
+      <img src="logo.png" alt="I-Impact Consult"><span>I-Impact Consult</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Corporate &amp; Commercial</a></li>
+            <li><a class="dropdown-item" href="#">Litigation &amp; Dispute Resolution</a></li>
+            <li><a class="dropdown-item" href="#">Compliance &amp; Strategy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact us</a></li>
+      </ul>
+      <a class="btn btn-meeting ms-lg-3 mt-3 mt-lg-0" href="#booking">Schedule A Meeting</a>
+    </div>
+  </div>
+</nav>
+
+<!-- TITLE / BG -->
+<section class="hero-bg">
+  <div class="container-xxl">
+    <h1 class="ct-title">Contact Us</h1>
+
+    <div class="row ct-grid g-4 pb-4">
+      <!-- Left image -->
+      <div class="col-12 col-lg-4">
+        <div class="ct-photo card-soft">
+          <!-- replace with your photo -->
+          <img src="a6.png" alt="Call us">
+        </div>
+
+        <!-- Location card -->
+        <div class="info-card mt-3">
+          <div class="info-icon"><i class="bi bi-geo-alt"></i></div>
+          <div class="info-title">Location</div>
+          <p class="info-text">Somewhere on earth<br>making the world safe</p>
+        </div>
+      </div>
+
+      <!-- Center form -->
+      <div class="col-12 col-lg-5">
+        <form class="ct-form card-soft" action="contact-submit.php" method="post">
+          <label class="label" for="contact-name">Name</label>
+          <input class="ct-input" type="text" id="contact-name" name="name" placeholder="Lu-guard Hopkins" autocomplete="name" required>
+
+          <label class="label mt-3" for="contact-email">Email</label>
+          <input class="ct-input" type="email" id="contact-email" name="email" placeholder="luguardhoppy@example.com" autocomplete="email" required>
+
+          <label class="label mt-3" for="contact-message">Message</label>
+          <textarea class="ct-textarea" id="contact-message" name="message" placeholder="Message will be sent as written, so write carefully." rows="6" required></textarea>
+
+          <div class="visually-hidden">
+            <label for="contact-company">Company</label>
+            <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="form_id" value="contact_form">
+
+          <button class="btn btn-meeting w-100 submit" type="submit">Schedule A Meeting</button>
+        </form>
+      </div>
+
+      <!-- Right contact blocks -->
+      <div class="col-12 col-lg-3">
+        <div class="info-card mb-3">
+          <div class="info-icon"><i class="bi bi-envelope"></i></div>
+          <div class="info-title">Email</div>
+          <p class="info-text">info@iimpactconsult.org</p>
+        </div>
+
+        <div class="info-card mb-3">
+          <div class="info-icon"><i class="bi bi-telephone"></i></div>
+          <div class="info-title">Phone</div>
+          <p class="info-text">Office: 123456789</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon"><i class="bi bi-chat-dots"></i></div>
+          <div class="info-title">Live chat</div>
+          <p class="info-text">We're online weekdays 9-5</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

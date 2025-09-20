@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I-Impact Consult — Home</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#8a5a3a;
+      --brand-dark:#6e452c;
+      --ink:#0B1220;
+      --card:#ffffff;
+    }
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#f6f6f4}
+
+    /* NAV */
+    .brandmark{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:800;color:var(--ink)}
+    .brandmark img{height:32px;width:auto}
+    .nav-link{font-weight:600;color:#343a40!important}
+    .nav-link.active,.nav-link:hover{color:var(--brand-dark)!important}
+    .btn-meeting{background:var(--brand);color:#fff;font-weight:700;border:none;padding:.65rem 1.15rem;border-radius:.9rem;box-shadow:0 6px 18px rgba(138,90,58,.18)}
+    .btn-meeting:hover{background:var(--brand-dark);color:#fff}
+
+    /* HERO */
+    .hero-wrap{
+      position:relative;min-height:86dvh;display:flex;align-items:center;overflow:clip;
+      background:
+        radial-gradient(1200px 1200px at 85% 20%, rgba(138,90,58,.08), transparent 60%),
+        linear-gradient(180deg, #faf9f7 0%, #f2f1ef 100%);
+      isolation:isolate;
+    }
+    .hero-wrap::after{
+      content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+      background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAOklEQVQYV2NkYGD4z4AD/2cYGBgY+J8ZQwMDw2gYQO8YwGQwGJg4A0QxwA1CkQ1wGqg1gE0CwAAgf4b5bY2rX0AAAAASUVORK5CYII=');
+      opacity:.45;mix-blend-mode:multiply;
+    }
+    .hero-title{font-family:"Cormorant Garamond",serif;font-weight:700;line-height:1.05;letter-spacing:.3px;font-size:clamp(2.2rem,4.5vw + .5rem,4.7rem);color:#2c2c2c}
+    .hero-copy{color:#5b5e64;max-width:48ch}
+    .cta-primary{background:var(--brand);color:#fff;border:none;padding:.9rem 1.25rem;border-radius:.9rem;font-weight:700}
+    .cta-primary:hover{background:var(--brand-dark);color:#fff}
+    .cta-ghost{background:#fff;color:#1f2937;border:1px solid #e5e7eb;padding:.9rem 1.15rem;border-radius:.9rem;font-weight:700}
+    .cta-ghost i{color:var(--brand-dark)}
+
+    /* RIGHT image block */
+    .portrait-wrap{position:relative;z-index:1;display:flex;align-items:end;justify-content:center}
+    .portrait{position:relative;width:min(520px,92%);max-width:520px;height:auto;transform:translateY(6px);filter:drop-shadow(0 22px 28px rgba(34,34,34,.18))}
+    .portrait-wrap::before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(closest-side, rgba(201,169,118,.35), transparent 75%);z-index:-1;filter:blur(1px);top:6%;left:50%;transform:translateX(-50%)}
+
+    /* EXPERIENCE CARD (12+ Years) */
+    .exp-card{position:absolute;right:0;bottom:6%;display:grid;place-items:center;text-align:center;background:var(--card);border-radius:1rem;padding:clamp(1.25rem,2.2vw,2.25rem);width:clamp(240px,34vw,380px);box-shadow:0 14px 36px rgba(0,0,0,.10);border:1px solid rgba(0,0,0,.05)}
+    .exp-icon{width:clamp(38px,3.6vw,52px);height:clamp(38px,3.6vw,52px);display:grid;place-items:center;border-radius:50%;background:#f3efe9;color:var(--brand-dark);font-size:clamp(1rem,1.4vw,1.35rem);margin-bottom:.35rem}
+    .exp-num{font-size:clamp(2.4rem,6.5vw,4.25rem);line-height:1;font-weight:800;letter-spacing:.5px}
+    .exp-plus{font-size:clamp(1.25rem,3.2vw,2rem);font-weight:800;margin-left:.15rem;transform:translateY(-6%)}
+    .exp-title{font-weight:700;margin-top:.25rem}
+    .exp-sub{color:#6b7280;line-height:1.35}
+    @media (max-width:1200px){.portrait-wrap::before{width:480px;height:480px}.portrait{width:min(470px,92%)}}
+    @media (max-width:991.98px){.portrait-wrap{align-items:center}.exp-card{position:relative;right:auto;bottom:auto;margin:1rem auto 0;width:min(440px,92%)}.portrait-wrap::before{width:420px;height:420px}.portrait{width:min(420px,90%)}}
+    @media (max-width:575.98px){.btn-meeting{display:none}.exp-card{width:92%;padding:1.25rem;border-radius:.9rem}}
+
+    /* ==== FEATURE CARDS (the 4 boxes with “Read  More ———”) ==== */
+    .feat-wrap{
+      background:#f2efea;            /* slightly warmer than hero tail to match screenshot */
+      padding-block: 2.25rem;
+    }
+    .feat-grid{margin-top:-3.75rem}   /* pulls cards upward under hero edge like the mock */
+    .feat-card{
+      background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:.6rem;
+      box-shadow:0 10px 24px rgba(0,0,0,.06);
+      padding:1.25rem 1.15rem; height:100%;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .feat-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.09)}
+    .feat-title{
+      font-family:"Cormorant Garamond",serif; font-weight:700; color:#1f1f1f;
+      font-size:clamp(1.05rem,1.2vw + .65rem,1.4rem); line-height:1.25; margin-bottom:.35rem;
+    }
+    .feat-text{color:#5e6267; line-height:1.6; font-size:.97rem}
+    .feat-read{
+      display:flex; align-items:center; gap:.65rem; margin-top:1.1rem; font-weight:700; color:#7a5338;
+    }
+    .feat-read a{color:#7a5338; text-decoration:none; display:inline-flex; align-items:center; gap:.65rem}
+    .feat-read .dash{
+      height:1px; flex:1; background:#bfa892; opacity:.9;
+    }
+    .feat-read .lbl{white-space:nowrap}
+    @media (max-width:991.98px){ .feat-grid{margin-top:-2.5rem} }
+    @media (max-width:575.98px){ .feat-wrap{padding-block:1.5rem} }
+
+    /* ==== WHO WE ARE (previous step) ==== */
+    .who-wrap{background:#f5f3f0;--accent:#8a5a3a;--ink:#141416;--muted:#6f7277}
+    .who-wrap .kicker{ text-transform:uppercase; letter-spacing:.16em; font-weight:800; font-size:.85rem; color:#8c6d52 }
+    .who-title{ font-family:"Cormorant Garamond",serif; font-weight:700; line-height:1.05; letter-spacing:.2px; color:var(--ink); font-size:clamp(2rem,3.5vw + .6rem,3.4rem) }
+    .who-rule{ height:1px; opacity:1; border:0; background:linear-gradient(90deg, rgba(0,0,0,.14), rgba(0,0,0,.08)); max-width:min(720px,95%) }
+    .who-lead,.who-copy{ color:#6a6e73; line-height:1.65; max-width:62ch }
+    .who-btn{ background:var(--accent); color:#fff; font-weight:700; border:none; padding:.9rem 1.2rem; border-radius:.9rem; box-shadow:0 10px 24px rgba(138,90,58,.18) }
+    .who-btn:hover{ background:#6e452c; color:#fff }
+    .who-portrait{ position:relative; width:min(520px,95%); aspect-ratio:4/5.3; margin:0; transform:rotate(-4.5deg); border-radius:.35rem; overflow:hidden; background:linear-gradient(#f1f1f1,#d7d7d7); box-shadow:0 24px 40px rgba(0,0,0,.10),0 2px 0 rgba(0,0,0,.05) inset }
+    .who-portrait img{ position:absolute; inset:0; width:104%; height:104%; object-fit:cover; object-position:center; transform:translateY(2%) scale(1.02); filter:drop-shadow(0 10px 18px rgba(0,0,0,.12)) }
+    .who-slant{ position:absolute; right:2.8rem; top:2.2rem; width:140px; height:340px; transform:rotate(20deg);
+      background:repeating-linear-gradient(90deg, rgba(138,90,58,.22) 0 2px, rgba(138,90,58,0) 2px 8px); opacity:.55; border-radius:.25rem; pointer-events:none }
+    .who-slant-lg{ right:2.4rem; top:3.2rem; height:360px }
+    .who-slant-sm{ right:5.5rem; top:17rem; height:200px; width:120px; transform:rotate(20deg); opacity:.55 }
+    .who-lines{ width:min(560px,90%); height:74px; background:repeating-linear-gradient(0deg, rgba(138,90,58,.26) 0 2px, rgba(138,90,58,0) 2px 9px); border-radius:.25rem; margin-left:auto }
+    @media (max-width:1199.98px){ .who-slant,.who-slant-lg,.who-slant-sm{display:none} }
+    @media (max-width:991.98px){ .who-portrait{margin-inline:auto; transform:none; width:min(440px,92%); aspect-ratio:4/5.2}
+      .who-lines{margin-inline:auto} }
+    @media (max-width:575.98px){ .who-wrap{padding-top:2.25rem;padding-bottom:2.75rem} .who-portrait{width:100%;border-radius:.5rem} .who-rule,.who-lines{max-width:100%;width:100%} }
+
+
+    /* WHAT WE DO */
+.wwd-wrap{
+  background:#f1eee9;   /* warm light backdrop like the mock */
+  position:relative;
+}
+
+/* header */
+.wwd-kicker{
+  text-transform:uppercase; letter-spacing:.16em; font-weight:800;
+  font-size:.85rem; color:#8c6d52;
+}
+.wwd-title{
+  font-family:"Cormorant Garamond",serif; font-weight:700; line-height:1.05;
+  color:#111; font-size:clamp(2rem,3.4vw + .6rem,3.4rem);
+}
+
+/* button */
+.wwd-cta{
+  background:var(--brand); color:#fff; font-weight:800; border:none;
+  border-radius:.9rem; padding:.85rem 1.2rem; box-shadow:0 10px 22px rgba(138,90,58,.18);
+}
+.wwd-cta:hover{ background:var(--brand-dark); color:#fff }
+
+/* grid frame – pulls up under the heading like screenshot */
+.wwd-grid{ margin-top:1.1rem }
+
+/* cards */
+.wwd-card{
+  height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:.5rem; text-align:center;
+  padding:1.25rem .75rem;
+  border-radius:.4rem;
+  background:
+    radial-gradient(1400px 1400px at 50% 0%, rgba(0,0,0,.03), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.04) 0 1px, rgba(0,0,0,0) 1px 7px),
+    #e7e3de; /* grainy, like tiles in your mock */
+  border:1px solid rgba(0,0,0,.08);
+}
+
+/* icon + label */
+.wwd-ico{ font-size:2rem; color:var(--brand-dark) }
+.wwd-lbl{ color:#2a2a2a; font-weight:700; font-size:.95rem; line-height:1.15 }
+
+/* DESKTOP separators: vertical lines between 6 columns and a row divider */
+@media (min-width: 992px){
+  /* vertical separators */
+  #what-we-do .col-lg-2 .wwd-card{ border-left:1px solid rgba(0,0,0,.12) }
+  #what-we-do .col-lg-2:nth-child(6n+1) .wwd-card{ border-left:none }      /* first in each row (1,7) */
+
+  /* horizontal divider between row 1 and 2 */
+  #what-we-do .col-lg-2:nth-child(n+7) .wwd-card{ border-top:1px solid rgba(0,0,0,.12) }
+}
+
+/* simplify borders on tablet/phone for clarity */
+@media (max-width: 991.98px){
+  .wwd-card{ border-left:none; }
+}
+
+/* left slanted stripes */
+.wwd-slant{
+  position:absolute; left:-12px; width:160px; height:320px; transform:rotate(-20deg);
+  background:repeating-linear-gradient(90deg, rgba(138,90,58,.22) 0 2px, rgba(138,90,58,0) 2px 8px);
+  opacity:.55; border-radius:.25rem; pointer-events:none;
+}
+.wwd-slant-a{ top:-10px }
+.wwd-slant-b{ top:210px; height:240px; left:-28px }
+
+
+/* ===== What Can We Do section ===== */
+.wcw-wrap{ background:#f4f2ef }
+.wcw-title{
+  font-family:"Cormorant Garamond", serif;
+  font-weight:700;
+  letter-spacing:.2px;
+  line-height:1.05;
+  color:#111;
+  font-size:clamp(2rem, 3.8vw + .5rem, 3.8rem);
+}
+
+/* Card shell */
+.svc-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:.45rem;
+  overflow:hidden;
+  box-shadow:0 10px 26px rgba(0,0,0,.06);
+  display:flex; flex-direction:column;
+}
+
+/* Media with diagonal bottom */
+.svc-media{
+  position:relative; margin:0; line-height:0; overflow:hidden;
+}
+.svc-media img{
+  display:block; width:100%; height:340px; object-fit:cover;
+}
+.svc-media::after{
+  /* diagonal white panel overlay to mimic the slanted cut */
+  content:""; position:absolute; left:0; right:0; height:70px;
+  background:#fff;
+  transform-origin:left bottom;
+  transform:skewY(-6deg);
+  box-shadow:0 1px 0 rgba(0,0,0,.04) inset;
+}
+
+/* Body */
+.svc-body{ padding:1.4rem 1.6rem 1.6rem }
+.svc-title{
+  font-family:"Cormorant Garamond", serif;
+  font-weight:700; color:#1a1a1a;
+  font-size:clamp(1.15rem, 1.1vw + .9rem, 1.6rem);
+  line-height:1.25; margin-bottom:.6rem;
+}
+.svc-text{
+  color:#61666b; line-height:1.7; margin:0;
+  font-size:clamp(.95rem, .25vw + .9rem, 1rem);
+}
+
+/* CTA pill */
+.wcw-cta{
+  background:#8a5a3a; color:#fff; font-weight:800;
+  border:1px solid #8a5a3a;
+  border-radius:1rem;
+  padding:.95rem 1.35rem;
+  box-shadow:0 12px 28px rgba(138,90,58,.18);
+}
+.wcw-cta:hover{ background:#6e452c; color:#fff; border-color:#6e452c }
+
+/* Responsive tweaks */
+@media (max-width: 991.98px){
+  .svc-media img{ height:300px }
+}
+@media (max-width: 575.98px){
+  .svc-media img{ height:250px }
+  .svc-body{ padding:1.1rem 1.2rem 1.25rem }
+}
+
+.stat-card{
+      position:absolute; right:0; bottom:10%;
+      width: clamp(220px, 30vw, 320px);
+      background:#fff; border-radius:18px; padding:22px;
+      text-align:center; box-shadow:0 14px 36px rgba(0,0,0,.10);
+    }
+    .stat-card .num{ font-size: clamp(46px, 5.2vw, 72px); font-weight:800; line-height:1; }
+    .stat-card .kicker{ color:#374151; font-weight:700; }
+    .stat-card .sub{ color:#6b7280; font-size:.9rem; }
+
+
+/* ===== Impact Monday band ===== */
+.im-wrap{ background:#f4f2ef; } /* page backdrop like your mock */
+
+.im-panel{
+  background: radial-gradient(1200px 900px at 60% 0%, rgba(255,255,255,.06), transparent 60%),
+              linear-gradient(90deg, #6f4a34 0%, #8b5b3b 45%, #7b5234 100%);
+  color:#fff;
+  border-radius:.5rem;
+  overflow:hidden;
+  box-shadow:0 14px 36px rgba(0,0,0,.08);
+  padding: clamp(1.25rem, 3.5vw, 2.25rem);
+}
+
+/* Left copy */
+.im-copy{ padding-right: clamp(.25rem, 2.2vw, 2.25rem); }
+.im-kicker{
+  text-transform:uppercase; letter-spacing:.16em; font-weight:800;
+  font-size:.95rem; color:#f1d6bf; margin-bottom:.25rem;
+}
+.im-title{
+  font-family:"Cormorant Garamond", serif;
+  font-weight:700; line-height:1.05; letter-spacing:.2px;
+  font-size: clamp(1.8rem, 3.9vw + .4rem, 3.2rem);
+  margin-bottom:.8rem;
+}
+.im-lead{
+  color:#f7efe9; opacity:.95;
+  line-height:1.65; margin-bottom:.75rem;
+  max-width: 64ch;
+}
+
+/* bullet list with small warm dots */
+.im-list{ margin:0 0 1.1rem 0; padding-left:0; list-style:none; }
+.im-list li{
+  position:relative; padding-left:1.35rem; margin:.45rem 0; line-height:1.6;
+  color:#f7efe9;
+}
+.im-list li::before{
+  content:""; position:absolute; left:0; top:.58em;
+  width:.42rem; height:.42rem; border-radius:50%;
+  background:#f0c49f;
+}
+
+/* CTA line-link */
+.im-link{
+  display:inline-flex; align-items:center; gap:.9rem;
+  color:#f0c49f; font-weight:800; text-decoration:none;
+}
+.im-link:hover{ color:#ffe7cf }
+.im-link-line{
+  display:inline-block; height:1px; width:9.5rem;
+  background:linear-gradient(90deg, #e8c5a4, rgba(232,197,164,.25));
+}
+
+/* Right image */
+.im-media{
+  margin:0; padding: clamp(.5rem, 1.8vw, 1.25rem);  /* uniform inset like the mock */
+}
+.im-media img{
+  width:100%; height: clamp(260px, 32vw, 360px); object-fit:cover;
+  border-radius:.25rem;
+  display:block;
+}
+
+/* Responsive stacking & spacing */
+@media (max-width: 991.98px){
+  .im-copy{ padding-right:0; margin-bottom:1rem }
+  .im-media{ padding-top:0 }
+}
+@media (max-width: 575.98px){
+  .im-panel{ padding:1rem }
+  .im-media img{ height: 240px }
+}
+
+
+
+.profile-tilt{
+  position:relative; border-radius:10px; overflow:hidden; background:#111;
+  box-shadow:0 22px 50px rgba(0,0,0,.22), 0 6px 16px rgba(0,0,0,.12);
+  transform-origin:center;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.profile-tilt img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* individual tilts like your mock */
+.profile-left{ transform: rotate(7deg); }
+.profile-right{ transform: rotate(-7deg); }
+
+/* dark glass info bar */
+.profile-info{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:18px 20px 20px;
+  color:#f7f7f5;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.65) 35%, rgba(0,0,0,.85) 100%);
+  backdrop-filter: blur(2px);
+}
+.profile-role{ color:#d9b28b; font-weight:800; margin-bottom:2px; }
+.profile-name{
+  font-family:"DM Serif Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(18px,1.2vw+14px,28px); margin:0 0 6px 0;
+}
+.profile-blurb{ font-size:.95rem; color:#ddd8d3; margin:0 0 10px 0; }
+
+/* Read bio link with hairline */
+.profile-link{
+  display:inline-flex; align-items:center; gap:.6rem; font-weight:800;
+  color:#d9b28b; text-decoration:none;
+}
+.profile-link::after{
+  content:""; height:1px; width:90px; background:rgba(217,178,139,.7);
+}
+.profile-link:hover{ color:#ffe2c3; }
+
+/* hover: slightly reduce tilt for a lively feel */
+.profile-tilt:hover{
+  transform: rotate(2deg) translateY(-4px);
+  box-shadow:0 30px 60px rgba(0,0,0,.28), 0 10px 22px rgba(0,0,0,.16);
+}
+.profile-right:hover{ transform: rotate(-2deg) translateY(-4px); }
+
+/* responsive: tone down tilt on small screens */
+@media (max-width: 991.98px){
+  .profile-left{ transform: rotate(4deg); }
+  .profile-right{ transform: rotate(-4deg); }
+}
+@media (max-width: 575.98px){
+  .profile-left, .profile-right{ transform: none; }
+}
+
+
+
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:#f7f6f4; border-top:1px solid rgba(0,0,0,.05);
+  padding:1.75rem 0;
+  font-size:.9rem;
+}
+.footer-inner{
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:1rem;
+}
+.footer-left{ display:flex; flex-direction:column; gap:.4rem }
+.footer-brand{
+  display:flex; align-items:center; gap:.55rem; text-decoration:none;
+  font-weight:800; color:#5b4232;
+}
+.footer-brand img{ height:28px; width:auto }
+
+.footer-right{
+  display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;
+  text-align:right;
+}
+.footer-links a{
+  color:#6b6e72; text-decoration:none; font-size:.9rem;
+}
+.footer-links a:hover{ color:#8a5a3a }
+.footer-links .dot{ margin:0 .4rem; color:#999 }
+
+.footer-socials{ display:flex; align-items:center; gap:.65rem }
+.footer-socials a{
+  display:grid; place-items:center;
+  width:36px; height:36px; border:1px solid rgba(0,0,0,.25);
+  border-radius:50%; color:#8a5a3a; font-size:1rem;
+  transition:background .25s, color .25s;
+}
+.footer-socials a:hover{
+  background:#8a5a3a; color:#fff;
+  border-color:#8a5a3a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px){
+  .footer-inner{ flex-direction:column; text-align:center }
+  .footer-right{ justify-content:center }
+}
+
+/* ===== TEAM SECTION ===== */
+.team-wrap{ background:#f4f3f1 }
+.team-kicker{
+  text-transform:uppercase; letter-spacing:.16em; font-weight:800;
+  color:#8c6d52; font-size:.95rem;
+}
+.team-title{
+  font-family:"Cormorant Garamond", serif; font-weight:700; line-height:1.05;
+  font-size:clamp(2rem, 3.2vw + .6rem, 3.2rem); margin:.25rem 0 .35rem; color:#121212;
+}
+.team-intro{
+  max-width:980px; color:#52565b; line-height:1.55; font-size:clamp(.95rem,.25vw + .92rem,1rem)
+}
+
+/* grid */
+.team-grid{
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(1.25rem, 2.5vw, 2.25rem);
+  align-items:start; justify-items:center;
+  margin-top:clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* core card */
+.team-card{
+  --tilt: -6deg;                   /* per-card rotation via inline style */
+  width:min(560px, 92%);           /* same visual width for both */
+  perspective:1200px; isolation:isolate;
+}
+.card-frame{
+  transform:rotate(var(--tilt));
+  background:linear-gradient(#eee7e2,#d9d1cb);        /* soft studio backdrop like mock */
+  border-radius:.25rem; overflow:hidden;
+  box-shadow:0 28px 44px rgba(0,0,0,.16);
+  position:relative;
+}
+/* photo */
+.card-frame > img{
+  width:100%; height:clamp(520px, 64vw, 640px);
+  object-fit:cover; display:block;
+  filter:drop-shadow(0 6px 10px rgba(0,0,0,.08));
+}
+
+/* caption bar (dark glass) */
+.caption{
+  position:absolute; left:0; right:0; bottom:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.00) 0%, rgba(0,0,0,.25) 12%),
+             linear-gradient(180deg, rgba(18,18,18,.92), rgba(18,18,18,.92));
+  color:#fff; padding:1.1rem 1.25rem 1.15rem;
+  display:block;
+}
+.caption .role{ color:#c99a6b; font-weight:700; margin-bottom:.25rem }
+.caption .name{
+  font-family:"Cormorant Garamond", serif; font-weight:700;
+  font-size:clamp(1.25rem, 1.2vw + 1rem, 1.8rem); margin:0 0 .35rem;
+}
+.caption .bio{ color:#d8d8d8; line-height:1.55; margin:0 0 .4rem; max-width:58ch }
+.caption .read{
+  display:inline-flex; align-items:center; gap:.6rem;
+  color:#e8bf94; font-weight:800; text-decoration:none;
+}
+.caption .read:hover{ color:#ffe0ba }
+.caption .read .rule{ width:6.5rem; height:1px; background:#b18b65; display:inline-block }
+
+/* keep both cards bottoms aligned visually */
+.team-card:nth-child(1) .card-frame{ margin-top:.25rem }  /* small nudge for optics */
+
+/* RESPONSIVE BEHAVIOUR */
+@media (max-width: 991.98px){
+  .team-grid{ grid-template-columns:1fr; }
+  .team-card{ width:min(560px, 96%) }
+}
+@media (max-width: 640px){
+  /* remove tilt on phones for readability and consistent cropping */
+  .card-frame{ transform:none }
+  .card-frame > img{ height:420px }
+  .caption{ padding:.95rem 1rem 1rem }
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-transparent py-3">
+    <div class="container-xxl">
+      <a class="brandmark" href="#"><img src="logo.png" alt="I-Impact Consult logo"><span>I-Impact Consult</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Corporate & Commercial</a></li>
+              <li><a class="dropdown-item" href="#">Litigation & Dispute Resolution</a></li>
+              <li><a class="dropdown-item" href="#">Compliance & Strategy</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+        </ul>
+        <div class="ms-lg-3 mt-3 mt-lg-0"><a class="btn btn-meeting" href="contact.html">Schedule A Meeting</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-wrap">
+    <div class="container-xxl position-relative">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6">
+          <h1 class="hero-title mb-4">Driving Impact Through<br>Law And Strategy</h1>
+          <p class="hero-copy mb-4">From corporate transaction to dispute resolution, we provide legal support that is clear, strategic, and focused on results. Our approach blends legal expertise with genuine commitment to making a difference for our clients and community.</p>
+          <div class="d-flex gap-3">
+            <a href="contact.html" class="btn cta-primary">Schedule Consultation</a>
+            <a href="tel:+234XXXXXXXXXX" class="btn cta-ghost"><i class="bi bi-telephone me-2"></i>Call Us</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="portrait-wrap">
+            <img class="portrait" src="img1.png" alt="I-Impact Counsel representative">
+
+          <div class="stat-card">
+              <div class="mb-2"><i class="bi bi-award-fill fs-3 text-warning"></i></div>
+              <div class="num">12+</div>
+              <div class="kicker">Years of Experience</div>
+              <div class="sub">on the field</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURE CARDS (4-up) -->
+  <section class="feat-wrap">
+    <div class="container-xxl feat-grid">
+      <div class="row g-3 g-md-4">
+        <!-- Card 1 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="feat-card h-100">
+            <h3 class="feat-title">Expertise You Can Trust</h3>
+            <p class="feat-text mb-3">
+              Our team of skilled lawyers and consultants bring proven know-how across commercial transactions from license procurement and joint ventures to securities, intellectual property, governance, and project financing.
+            </p>
+            <div class="feat-read">
+              <a href="about.html#FEATURE1" class="lbl">Read <span class="lbl">More</span></a><span class="dash"></span>
+            </div>
+          </article>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="feat-card h-100">
+            <h3 class="feat-title">Smarter Legal Project Management</h3>
+            <p class="feat-text mb-3">
+              We apply project management principles to law, ensuring clear task allocation, cost efficiency, progress reporting, and the agility to meet evolving client needs.
+            </p>
+            <div class="feat-read">
+              <a href="about.html#FEATURE2" class="lbl">Read <span class="lbl">More</span></a><span class="dash"></span>
+            </div>
+          </article>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="feat-card h-100">
+            <h3 class="feat-title">Strong Networks &amp; Regulatory Insight</h3>
+            <p class="feat-text mb-3">
+              With deep ties to consultants, government officials, and regulators, we navigate the intersection of law, policy, politics, and business to give clients a decisive edge.
+            </p>
+            <div class="feat-read">
+              <a href="about.html#FEATURE3" class="lbl">Read <span class="lbl">More</span></a><span class="dash"></span>
+            </div>
+          </article>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-12 col-md-6 col-lg-3">
+          <article class="feat-card h-100">
+            <h3 class="feat-title">Impact Through Counselling</h3>
+            <p class="feat-text mb-3">
+              We provide tailored counselling sessions for legal and social needs, made even more accessible through our free “Impact Mondays” initiative.
+            </p>
+            <div class="feat-read">
+              <a href="about.html#FEATURE4" class="lbl">Read <span class="lbl">More</span></a><span class="dash"></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section id="who-we-are" class="py-5 py-lg-6 who-wrap">
+    <div class="container-xxl position-relative">
+      <div class="row gy-5 align-items-center">
+        <div class="col-lg-5">
+          <figure class="who-portrait mx-auto mx-lg-0">
+            <img src="img2.png" alt="Counsel portrait">
+          </figure>
+        </div>
+        <div class="col-lg-7">
+          <div class="kicker mb-2">Who Are We</div>
+          <h2 class="who-title mb-3">Your Legal Partners In <br class="d-none d-md-block">Every Step</h2>
+          <hr class="who-rule mb-4">
+          <p class="who-lead">Ijere’s Impact Consult (I-Impact) is a full-service law firm with expertise in corporate and commercial law, compliance, litigation, intellectual property, project finance, media, real estate, and telecommunications trusted by organizations and individuals.</p>
+          <p class="who-copy mb-4">We also offer free bespoke counselling sessions on our Impact Mondays as well as other projects targeted at making significant impact in the lives of people.</p>
+          <a href="about.html" class="btn who-btn">Know More <i class="bi bi-arrow-right ms-2"></i></a>
+          <div class="who-lines mt-4 d-none d-md-block"></div>
+        </div>
+      </div>
+      <div class="who-slant who-slant-lg d-none d-xl-block"></div>
+      <div class="who-slant who-slant-sm d-none d-xl-block"></div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+<section id="what-we-do" class="wwd-wrap py-5 py-lg-6">
+  <div class="container-xxl position-relative">
+    <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-lg-between mb-3 mb-lg-4">
+      <div>
+        <div class="wwd-kicker mb-2">What We Do</div>
+        <h2 class="wwd-title m-0">Delivering Excellence In Every<br class="d-none d-xl-block">Area Of Practice</h2>
+      </div>
+
+      <a href="about.html#practice-area" class="btn wwd-cta mt-3 mt-lg-0">
+        <i class="bi bi-journal-text me-2"></i>
+        View All Practice Area
+      </a>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="row g-2 g-md-3 wwd-grid">
+      <!-- 1 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-bank2 wwd-ico"></i>
+          <div class="wwd-lbl">Capital Market &amp;<br>Finance</div>
+        </article>
+      </div>
+      <!-- 2 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+            <i class="bi bi-chat-text wwd-ico"></i>
+          <div class="wwd-lbl">Dispute Resolution</div>
+        </article>
+      </div>
+      <!-- 3 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-lightbulb wwd-ico"></i>
+          <div class="wwd-lbl">Intellectual Property</div>
+        </article>
+      </div>
+      <!-- 4 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-diagram-3 wwd-ico"></i>
+          <div class="wwd-lbl">Corporate Governance &amp;<br>Compliance</div>
+        </article>
+      </div>
+      <!-- 5 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-arrows-fullscreen wwd-ico"></i>
+          <div class="wwd-lbl">Mergers &amp; Acquisition</div>
+        </article>
+      </div>
+      <!-- 6 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-image wwd-ico"></i>
+          <div class="wwd-lbl">Real Estate</div>
+        </article>
+      </div>
+
+      <!-- 7 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-person-badge wwd-ico"></i>
+          <div class="wwd-lbl">Employment<br>&amp; Migration</div>
+        </article>
+      </div>
+      <!-- 8 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-cpu wwd-ico"></i>
+          <div class="wwd-lbl">Financial Technology</div>
+        </article>
+      </div>
+      <!-- 9 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-bank wwd-ico"></i>
+          <div class="wwd-lbl">Public Policy<br>&amp; Relation</div>
+        </article>
+      </div>
+      <!-- 10 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-lightning-charge wwd-ico"></i>
+          <div class="wwd-lbl">Energy &amp;<br>Natural Resource</div>
+        </article>
+      </div>
+      <!-- 11 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-cash-coin wwd-ico"></i>
+          <div class="wwd-lbl">Taxation</div>
+        </article>
+      </div>
+      <!-- 12 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <article class="wwd-card">
+          <i class="bi bi-star wwd-ico"></i>
+          <div class="wwd-lbl">Infrastructure Finance<br>&amp; PPP</div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Left decorative slanted stripes -->
+    <div class="wwd-slant wwd-slant-a d-none d-lg-block"></div>
+    <div class="wwd-slant wwd-slant-b d-none d-lg-block"></div>
+  </div>
+</section>
+
+
+<!-- WHAT CAN WE DO -->
+<section id="services-teaser" class="wcw-wrap py-5 py-lg-6">
+  <div class="container-xxl">
+
+    <!-- Title -->
+    <h2 class="wcw-title text-center mb-4 mb-lg-5">
+      What Can We Do For You?
+    </h2>
+
+    <!-- Cards -->
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="svc-card h-100">
+          <figure class="svc-media">
+            <img src="w3.png" alt="Banking and finance service">
+          </figure>
+          <div class="svc-body">
+            <h3 class="svc-title">Banking And Finance Legal Service</h3>
+            <p class="svc-text">
+              We draft and negotiate loan agreements, syndicated loans, security
+              instruments, and guarantees. Our team also advises on capital raising,
+              securities offerings, restructuring, acquisitions, disposals, and strategic
+              investments.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="svc-card h-100">
+          <figure class="svc-media">
+            <img src="w2.png" alt="Litigation and dispute resolution">
+          </figure>
+          <div class="svc-body">
+            <h3 class="svc-title">Litigation And Dispute Resolution</h3>
+            <p class="svc-text">
+              From trials to settlements, we deliver strong advocacy and effective
+              dispute resolution strategies. We also help clients manage legal risks
+              tied to investments and business decisions to minimize potential losses.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="svc-card h-100">
+          <figure class="svc-media">
+            <img src="w1.png" alt="Real estate services">
+          </figure>
+          <div class="svc-body">
+            <h3 class="svc-title">Real Estate Services</h3>
+            <p class="svc-text">
+              We connect clients with trusted agents and property managers to secure
+              rentals, land, or property purchases—ensuring every client finds the
+              right space with ease.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-4 mt-lg-5">
+      <a href="#all-legal-services" class="btn wcw-cta">
+        View All Legal Services
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT MONDAY -->
+<!-- IMPACT MONDAY -->
+<section id="impact-monday" class="im-wrap py-4 py-lg-5">
+  <div class="container-xxl">
+    <div class="im-panel">
+      <div class="row g-0 align-items-center">
+        <!-- Left: copy -->
+        <div class="col-lg-7">
+          <div class="im-copy">
+            <div class="im-kicker">Impact Monday</div>
+            <h2 class="im-title">Giving Back With Purpose</h2>
+
+            <p class="im-lead">
+              Our signature program dedicated to making intentional and exceptional impact in people’s lives
+              through free counselling, training, and resources.
+            </p>
+
+            <ul class="im-list">
+              <li>Held on the 5th Monday of any calendar month.</li>
+              <li>Free counselling on corporate affairs, dispute resolution, real estate, and leadership &amp; development.</li>
+              <li>Focused trainings on marriage, women’s leadership, and finance.</li>
+              <li>An intellectual arm sharing free educational articles at impact.substack.com.</li>
+            </ul>
+
+            <a href="#join-impact-monday" class="im-link">
+              Join The Next Impact Monday
+              <span class="im-link-line" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: video thumbnail -->
+        <!-- Right: video thumbnail -->
+<div class="col-lg-5">
+  <figure class="im-media position-relative d-inline-block">
+    <!-- Thumbnail image -->
+    <a href="#" data-bs-toggle="modal" data-bs-target="#impactVideoModal">
+      <img src="img3.png" alt="Impact Monday video" class="img-fluid rounded shadow" />
+      
+      <!-- Play icon overlay -->
+      <span class="video-icon" 
+        style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 3rem;
+          color: white;
+          background: rgba(0,0,0,0.5);
+          border-radius: 50%;
+          padding: 10px;
+        ">
+        <i class="bi bi-play-fill"></i>
+      </span>
+    </a>
+  </figure>
+</div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="impactVideoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark">
+      <div class="modal-body p-0">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                  title="Impact Monday Video" 
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="impactVideoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark">
+      <div class="modal-body p-0">
+        <!-- Example YouTube Embed -->
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                  title="Impact Monday Video" 
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- OUR TEAM -->
+<section id="team" class="team-wrap py-5 py-lg-6">
+  <div class="container-xxl">
+    <!-- heading -->
+    <div class="text-center mb-3">
+      <div class="team-kicker">OUR TEAM</div>
+      <h2 class="team-title">I-Impact Consult Law Expert</h2>
+      <p class="team-intro mx-auto">
+        Our team comprises experienced professionals with specialised interests and experience
+        in transaction advisory, deal structuring, corporate and commercial law and dispute
+        resolution. We are experts at public-private partnerships, negotiation, debt scheduling, 
+        public loan agreements and alternative dispute resolution.
+      </p>
+    </div>
+
+    <!-- cards -->
+   <div class="row justify-content-center g-5 mt-4">
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-5">
+        <figure class="profile-tilt profile-left">
+          <img src="img4.png"
+               alt="Precious Chinazam Ijere">
+          <figcaption class="profile-info">
+            <div class="profile-role">Founder</div>
+            <h3 class="profile-name">Precious Chinazam Ijere</h3>
+            <p class="profile-blurb">
+              Driving corporate growth through sharp legal insight, strategic negotiations, and people-focused impact.
+            </p>
+            <a href="#bio-precious" class="profile-link">Read Biography</a>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-5">
+        <figure class="profile-tilt profile-right">
+          <img src="img5.png"
+               alt="Vivien S. Udora">
+          <figcaption class="profile-info">
+            <div class="profile-role">Partner</div>
+            <h3 class="profile-name">Vivien S. Udora</h3>
+            <p class="profile-blurb">
+              From courtrooms to code—advancing fintech, startups, and legal innovation with clarity and vision.
+            </p>
+            <a href="#bio-vivien" class="profile-link">Read Biography</a>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container-xxl">
+    <div class="footer-inner">
+      
+      <!-- Left: brand + copyright -->
+      <div class="footer-left">
+        <a href="#" class="footer-brand">
+          <img src="logo.png" alt="I-Impact Consult Logo">
+          <span>I-Impact Consult</span>
+        </a>
+        <small>© I-Impact Consult All Rights Reserved.</small>
+      </div>
+
+      <!-- Right: links + socials -->
+      <div class="footer-right">
+        <nav class="footer-links">
+          <a href="#privacy">Privacy Policy</a>
+          <span class="dot">·</span>
+          <a href="#terms">Terms &amp; Condition</a>
+        </nav>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
