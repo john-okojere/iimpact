@@ -1,9 +1,13 @@
-# super tiny image with Python
+# Serve plain HTML/CSS with Python
 FROM python:3.12-alpine
 
-# copy your static site (index.html, /assets, /css, etc.)
+# Make logs appear immediately
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
 WORKDIR /site
+# copy your static site (index.html, /assets, /css, etc.)
 COPY . /site
 
-# Railway sets $PORT at runtime. Bind to 0.0.0.0 so the proxy can reach it.
-CMD ["sh", "-c", "python -m http.server $PORT --bind 0.0.0.0"]
+# Run http.server on the port Railway assigns; fallback to 8000 if not set
+CMD ["sh", "-c", "PORT=${PORT:-8000}; echo \"Starting static server on :$PORT\"; python -m http.server \"$PORT\" --bind 0.0.0.0"]
